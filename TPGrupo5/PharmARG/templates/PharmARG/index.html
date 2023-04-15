@@ -1,27 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PharmARG</title>
-</head>
-<body>
-    <header>
-        <h1>PharmARG</h1>
-        <h2>Gestión de pacientes, patologías, medicamentos y prescripciones</h2>
-    </header>
-    <nav>
-        <ul>
-            <li><a href="{% url 'index' %}"> Principal</a></li>
-            <li><a href="{% url 'alta_paciente' %}"> Agregar paciente</a></li>
-            <li><a href="{% url 'editar_paciente' %}"> Editar paciente</a></li>
-            <li><a href="{% url 'consultas' %}"> Consultar base de datos</a></li>
-        </ul>
-    </nav>
-    <main>
-        <p>Bienvenida/o, {{nombre_usuario}} {{nombre_usuario}}</p>
-    </main>
-    <footer>Copyright PharmARG 2023.</footer>
-</body>
-</html>
+{% extends "PharmARG/base.html" %}
+{% block titulo %} PharmARG {% endblock %} 
+
+{% block encabezado %} 
+    <h2>Gestión de pacientes, patologías, medicamentos y prescripciones</h2>
+{% endblock %}
+
+{% block contenido %} 
+<p>Bienvenida/o, {{user_name}} {{user_lastname}}</p>
+{% endblock %}

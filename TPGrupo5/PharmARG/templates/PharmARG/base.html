@@ -1,25 +1,17 @@
-{% extends "PharmARG/base.html" %}
-{% block titulo %} Nuevo Paciente {% endblock %} 
-
-{% block encabezado %} 
-{% endblock %}
-
-{% block contenido %} 
-<p>Agregar nuevo paciente</p>
-{% endblock %}
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agregar paciente</title>
+    <title>
+        {% block titulo %} {% endblock %} 
+    </title>
 </head>
 <body>
     <header>
         <h1>PharmARG</h1>
+        <h1>{% block encabezado %} {% endblock %}</h1>
     </header>
     <nav>
         <ul>
@@ -30,7 +22,8 @@
         </ul>
     </nav>
     <main>
-        <p>Agregar nuevo paciente</p>
+        {% block contenido %} 
+        {% endblock %}
     </main>
     <footer>Copyright PharmARG 2023.</footer>
 </body>
