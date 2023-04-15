@@ -19,7 +19,22 @@
         </ul>
     </nav>
     <main>
-        <p>Consultar base de datos</p>
+        <h2>Consultar base de datos</h2>
+        <section>
+            <h2>Resultado de su consulta</h2>
+        
+            {% for paciente in listado_pacientes %}
+            <p>Nombre: {{paciente.nombre_paciente}}</p>
+            <p>Apellido: {{paciente.apellido_paciente}}</p>
+            <p>Edad: {{paciente.edad_paciente}}</p>
+            <p>Patologías: {{paciente.pats_paciente}}</p>
+            <p>Medicamentos actuales: {{paciente.meds_paciente}}</p>
+            <p>Prescripciones pendientes de retiro: {{paciente.presc_pend_paciente}}</p>
+            {% empty %}
+            <p>No hay pacientes con las características solicitadas.</p>
+            {% endfor %}
+
+        </section>
     </main>
     <footer>Copyright PharmARG 2023.</footer>
 </body>
