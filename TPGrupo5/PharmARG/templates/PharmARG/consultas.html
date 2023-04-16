@@ -25,7 +25,14 @@
         
             {% for paciente in listado_pacientes %}
             <p>Nombre: {{paciente.nombre_paciente}}</p>
-            <p>Apellido: {{paciente.apellido_paciente}}</p>
+            
+            <p>
+                Apellido:
+                {% filter upper %}
+                {{paciente.apellido_paciente}}
+                {% endfilter %}
+            </p>
+            
             <p>Edad: {{paciente.edad_paciente}}</p>
             <p>Patologías: {{paciente.pats_paciente}}</p>
             <p>Medicamentos actuales: {{paciente.meds_paciente}}</p>

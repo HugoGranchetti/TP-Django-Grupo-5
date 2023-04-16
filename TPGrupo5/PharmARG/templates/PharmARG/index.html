@@ -1,10 +1,14 @@
 {% extends "PharmARG/base.html" %}
+
+{% load static %}
+
 {% block titulo %} PharmARG {% endblock %} 
 
-{% block encabezado %} 
+{% block encabezado %}
+    <img src="{% static 'PharmARG/img/logo.png' %}" alt="Logo" width="222.5" height="186">
     <h2>Gestión de pacientes, patologías, medicamentos y prescripciones</h2>
 {% endblock %}
 
 {% block contenido %} 
-<p>Bienvenida/o, {{user_name}} {{user_lastname}}</p>
+<p>Bienvenida/o, {{nombre_usuario}} {{apellido_usuario}}</p>
 {% endblock %}
