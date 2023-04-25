@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Cargar pedido</h2>
+  <form method="post" >
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Guardar</button>
+  </form>
+  {% if form.errors %}
+    <div class="alert alert-danger">
+      <strong>Oops!</strong> Hubo un error al procesar el formulario:
+      <ul>
+        {% for field_errors in form.errors.values %}
+          {% for error in field_errors %}
+            <li>{{ error }}</li>
+          {% endfor %}
+        {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+{% endblock %}

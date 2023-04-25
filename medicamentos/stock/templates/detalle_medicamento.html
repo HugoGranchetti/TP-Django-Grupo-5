@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Detalle del medicamento "{{ medicamento.nombre }}"</h1>
+  <ul>
+    <li>Precio: ${{ medicamento.precio }}</li>
+    <li>Proveedor: {{ medicamento.proveedor.nombre }}, {{ medicamento.proveedor.direccion }}</li>
+  </ul>
+{% endblock %}
