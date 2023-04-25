@@ -1,0 +1,86 @@
+
+body {
+  background-color: #6ce6b1;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  }
+  
+  /* Estilos CSS para el encabezado y el pie de página */
+  header, footer {
+  background-color: #94efa6;
+  text-align: center;
+  padding: 1em;
+  }
+  
+  /* Estilos CSS para los títulos de la página */
+  h1 {
+  font-size: 2.5em;
+  margin-bottom: 0;
+  }
+  h2 {
+  font-size: 1.5em;
+  margin-top: 0;
+  }
+  
+  /* Estilo para la barra de navegación */
+  nav {
+  background-color: #333;
+  color: #fff;
+  }
+  
+  nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  position: relative;
+  }
+  
+  nav ul li {
+  display: inline-block;
+  background-color: #333;
+  }
+  
+  nav a {
+  display: block;
+  padding: 15px;
+  color: #fff;
+  font-size: 18px;
+  text-decoration: none;
+  }
+  
+  nav ul ul {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 200px;
+  display: none;
+  }
+  
+  nav ul ul li {
+  display: block;
+  background-color: #555;
+  }
+  
+  /* Estilos para la tabla */
+  .table {
+  border-collapse: separate;
+  }
+  
+  .table thead th {
+  background-color: #555;
+  color: #fff;
+  }
+  
+  .table tbody td {
+  background-color: #baf6bb;
+  }
+  
+  .table tbody tr:nth-child(odd) td {
+  background-color: #c9fbd6;
+  }
+  
+  .table tbody tr:hover td {
+  background-color: #8ae28b;
+  }
