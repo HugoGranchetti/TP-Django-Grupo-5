@@ -3,10 +3,21 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 
 # Create your models here.
 
-class Proveedor(models.Model):
-    nombre = models.CharField(max_length=200)
-    direccion = models.CharField(max_length=200)
-    telefono = models.CharField(max_length=20)
+class Empresa(models.Model):
+    nombre = models.CharField(max_length=100, verbose_name="Nombre", null=True)
+    mail = models.EmailField(max_length=100, verbose_name="E-mail", null=True)
+    telefono = models.CharField(max_length=20, verbose_name="Teléfono", null=True)
+
+    class Meta:
+        abstract = True
+
+class Cliente(Empresa):
+    cuit = models.CharField(max_length=100, verbose_name="CUIT", null=True)
+    def __str__(self):
+        return self.nombre
+
+class Proveedor(Empresa):
+    pais = models.CharField(max_length=200, verbose_name="País", null=True)
     def __str__(self):
         return self.nombre
 
@@ -28,13 +39,6 @@ class Pedido(models.Model):
     cantidad = models.IntegerField()
     archivo = models.FileField(upload_to='uploads/', blank=True, null=True)
     vendedor=models.IntegerField(default=0)
-
-class Cliente(models.Model):
-    nombre = models.CharField(max_length=100)
-    direccion = models.CharField(max_length=100)
-    telefono = models.CharField(max_length=20)
-    def __str__(self):
-        return self.nombre
 
 class stock_User(models.Model):
     email = models.EmailField(unique=True)

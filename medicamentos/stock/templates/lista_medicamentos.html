@@ -38,6 +38,11 @@
         </form>
       </td>
     </tr>
+
+    {% empty %}
+
+        <article>No hay medicamentos cargados.</article>
+
     {% endfor %}
   </tbody>
 </table>

@@ -102,7 +102,7 @@ def alta_proveedor(request):
         form = ProveedorForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('alta_proveedor.html')
+            return redirect('alta_proveedor')
     else:
         form = ProveedorForm()
     context = {'form': form}

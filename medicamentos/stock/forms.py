@@ -6,15 +6,26 @@ import datetime
 from .models import Cliente, Proveedor
 from .models import stock_User
 
+class ClienteForm(forms.ModelForm):
+    class Meta:
+        model = Cliente
+        fields = '__all__'
+        widgets = {
+            'nombre': forms.TextInput(attrs={'class': 'form-control'}),
+            'mail': forms.EmailInput(attrs={'class': 'form-control'}),
+            'telefono': forms.TextInput(attrs={'class': 'form-control'}),
+            'cuit': forms.TextInput(attrs={'class': 'form-control'}),
+        }
+
 class ProveedorForm(forms.ModelForm):
     class Meta:
         model = Proveedor
         fields = '__all__'
         widgets = {
             'nombre': forms.TextInput(attrs={'class': 'form-control'}),
-            'direccion': forms.TextInput(attrs={'class': 'form-control'}),
+            'mail': forms.EmailInput(attrs={'class': 'form-control'}),
             'telefono': forms.TextInput(attrs={'class': 'form-control'}),
-            'email': forms.EmailInput(attrs={'class': 'form-control'}),
+            'pais': forms.TextInput(attrs={'class': 'form-control'}),
         }
 
 class MedicamentoForm(forms.ModelForm):
@@ -38,17 +49,6 @@ class PedidoForm(forms.ModelForm):
         pedido.productos.add(self.cleaned_data['productos'].id)
         return pedido
     
-class ClienteForm(forms.ModelForm):
-    class Meta:
-        model = Cliente
-        fields = '__all__'
-        widgets = {
-            'nombre': forms.TextInput(attrs={'class': 'form-control'}),
-            'direccion': forms.TextInput(attrs={'class': 'form-control'}),
-            'telefono': forms.TextInput(attrs={'class': 'form-control'}),
-            'email': forms.EmailInput(attrs={'class': 'form-control'}),
-        }
-
 class RegistrationForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput())
     class Meta:
