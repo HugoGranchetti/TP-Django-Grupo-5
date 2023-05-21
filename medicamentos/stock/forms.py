@@ -38,10 +38,18 @@ class PedidoForm(forms.ModelForm):
         queryset=Medicamento.objects.all(),
         widget=forms.RadioSelect
     )
+    nombre_cliente = forms.ModelChoiceField(
+        queryset=Cliente.objects.all(),
+        widget=forms.RadioSelect
+    )
+    proveedor = forms.ModelChoiceField(
+        queryset=Proveedor.objects.all(),
+        widget=forms.RadioSelect
+    )
     fecha_pedido = forms.DateField(widget=SelectDateWidget(), initial=datetime.date.today)
     class Meta:
         model = Pedido
-        fields = ['nombre_cliente', 'fecha_pedido', 'cantidad', 'productos','vendedor']
+        fields = ['nombre_cliente', 'fecha_pedido', 'cantidad', 'productos','proveedor']
     def save(self, commit=True):
         pedido = super().save(commit=False)
         if commit:

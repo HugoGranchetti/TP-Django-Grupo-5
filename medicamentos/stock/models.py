@@ -36,8 +36,8 @@ class Pedido(models.Model):
     fecha_pedido = models.DateField()
     productos = models.ManyToManyField(Medicamento)
     cantidad = models.IntegerField()
+    proveedor=models.ManyToManyField(Proveedor)
     archivo = models.FileField(upload_to='uploads/', blank=True, null=True)
-    vendedor=models.IntegerField(default=0)
 
 class stock_User(models.Model):
     email = models.EmailField(unique=True)
