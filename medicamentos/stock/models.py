@@ -35,7 +35,7 @@ class Medicamento(models.Model):
 class Pedido(models.Model):
     nombre_cliente = models.CharField(max_length=50)
     fecha_pedido = models.DateField()
-    productos = models.ForeignKey(Medicamento,on_delete=models.CASCADE)
+    productos = models.ManyToManyField(Medicamento, on_delete=models.CASCADE)
     cantidad = models.IntegerField()
     archivo = models.FileField(upload_to='uploads/', blank=True, null=True)
     vendedor=models.IntegerField(default=0)
