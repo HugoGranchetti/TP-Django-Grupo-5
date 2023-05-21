@@ -22,7 +22,6 @@ class Proveedor(Empresa):
         return self.nombre
 
 class Medicamento(models.Model):
-    id = models.IntegerField(primary_key=True)
     nombre = models.CharField(max_length=200)
     proveedor = models.ForeignKey(Proveedor, on_delete=models.CASCADE)
     cantidad = models.IntegerField()

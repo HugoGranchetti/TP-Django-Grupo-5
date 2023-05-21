@@ -31,7 +31,7 @@ class ProveedorForm(forms.ModelForm):
 class MedicamentoForm(forms.ModelForm):
     class Meta:
         model = Medicamento
-        fields = ['nombre', 'cantidad', 'fecha_vencimiento', 'proveedor', 'precio', 'lote', 'id']
+        fields = ['nombre', 'cantidad', 'fecha_vencimiento', 'proveedor', 'precio', 'lote']
 
 class PedidoForm(forms.ModelForm):
     productos = forms.ModelChoiceField(
