@@ -64,9 +64,7 @@ def cargar_pedido(request):
     if request.method == 'POST':
         form = PedidoForm(request.POST)
         if form.is_valid():
-            
-            pedido = form.save(commit=False)
-            pedido.productos_id = request.POST['productos_id']
+            pedido = form.save()
             pedido.save()
             return redirect('lista_pedidos')
     else:
@@ -131,7 +129,7 @@ def register(request):
         form = RegistrationForm(request.POST)
         if form.is_valid():
             user = form.save()
-            # Aquí puede agregar cualquier lógica adicional, como enviar un correo electrónico de bienvenida, etc.
+            # Aquí se puede agregar cualquier lógica adicional, como enviar un correo electrónico de bienvenida, etc.
             return redirect('login')
     else:
         form = RegistrationForm()

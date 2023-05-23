@@ -6,15 +6,13 @@
             <tr>
                 <th>Fecha</th>
                 <th>Nombre del Cliente</th>
-                <th>Productos</th>
             </tr>
         </thead>
         <tbody>
             {% for pedido in pedidos %}
             <tr>
-                <td>{{ pedido.fecha }}</td>
+                <td>{{ pedido.fecha_pedido }}</td>
                 <td>{{ pedido.nombre_cliente }}</td>
-                <td>{{ pedido.productos }}</td>
             </tr>
             {% endfor %}
         </tbody>

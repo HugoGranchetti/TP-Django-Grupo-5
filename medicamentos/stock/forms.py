@@ -49,7 +49,7 @@ class PedidoForm(forms.ModelForm):
     fecha_pedido = forms.DateField(widget=SelectDateWidget(), initial=datetime.date.today)
     class Meta:
         model = Pedido
-        fields = ['nombre_cliente', 'fecha_pedido', 'cantidad', 'productos','proveedor']
+        fields = ['nombre_cliente', 'fecha_pedido', 'cantidad', 'productos','proveedor','archivo']
     def save(self, commit=True):
         pedido = super().save(commit=False)
         if commit:
