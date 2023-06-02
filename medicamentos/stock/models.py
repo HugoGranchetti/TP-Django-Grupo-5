@@ -10,16 +10,15 @@ class Empresa(models.Model):
 
     class Meta:
         abstract = True
+    
+    def __str__(self):
+        return f"{self.nombre} ({self.mail})"
 
 class Cliente(Empresa):
     cuit = models.CharField(max_length=100, verbose_name="CUIT", null=True)
-    def __str__(self):
-        return self.nombre
 
 class Proveedor(Empresa):
     pais = models.CharField(max_length=200, verbose_name="País", null=True)
-    def __str__(self):
-        return self.nombre
 
 class Medicamento(models.Model):
     nombre = models.CharField(max_length=200)
