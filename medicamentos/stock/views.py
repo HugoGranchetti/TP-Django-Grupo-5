@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
 from .models import Medicamento, Proveedor,Cliente
 from .forms import MedicamentoForm,ClienteForm, ProveedorForm,Pedido,PedidoForm
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth import authenticate, login, logout
 from .forms import RegistrationForm
 
@@ -12,14 +12,17 @@ def inicio(request):
 def index(request):
     return render(request, 'index.html')
 
+@login_required
 def lista_medicamentos(request):
     medicamentos = Medicamento.objects.all()
     return render(request, 'lista_medicamentos.html', {'medicamentos': medicamentos})
 
+@login_required
 def detalle_medicamento(request, medicamento_id):
     medicamento = get_object_or_404(Medicamento, pk=medicamento_id)
     return render(request, 'detalle_medicamento.html', {'medicamento': medicamento})
 
+@permission_required('stock.add_medicamento')
 def alta_medicamento(request):
     if request.method == 'POST':
         form = MedicamentoForm(request.POST)
@@ -30,6 +33,7 @@ def alta_medicamento(request):
         form = MedicamentoForm()
     return render(request, 'alta_medicamento.html', {'form': form})
 
+@permission_required('stock.add_medicamento')
 def editar_medicamento(request, medicamento_id):
     medicamento = get_object_or_404(Medicamento, pk=medicamento_id)
     if request.method == 'POST':
@@ -60,6 +64,7 @@ def logout_view(request):
     logout(request)
     return redirect(reverse('login'))
 
+@login_required
 def cargar_pedido(request):
     if request.method == 'POST':
         form = PedidoForm(request.POST)
@@ -71,11 +76,13 @@ def cargar_pedido(request):
         form = PedidoForm()
     return render(request, 'pedido.html', {'form': form})
 
+@login_required
 def lista_pedidos(request):
     pedidos = Pedido.objects.all()
     context = {'pedidos': pedidos}
     return render(request, 'lista_pedidos.html', context)
 
+@login_required
 def eliminar_medicamento(request, pk):
     medicamento = Medicamento.objects.get(id=pk)
     if request.method == 'POST':
@@ -84,6 +91,7 @@ def eliminar_medicamento(request, pk):
     context = {'medicamento': medicamento}
     return render(request, 'eliminar_medicamento.html', context)
 
+@login_required
 def alta_cliente(request):
     if request.method == 'POST':
         form = ClienteForm(request.POST)
@@ -95,6 +103,7 @@ def alta_cliente(request):
     context = {'form': form}
     return render(request, 'alta_cliente.html', context)
 
+@login_required
 def alta_proveedor(request):
     if request.method == 'POST':
         form = ProveedorForm(request.POST)
@@ -106,16 +115,19 @@ def alta_proveedor(request):
     context = {'form': form}
     return render(request, 'alta_proveedor.html', context)
 
+@login_required
 def lista_clientes(request):
     clientes = Cliente.objects.all()
     context = {'clientes': clientes}
     return render(request, 'lista_clientes.html', context)
 
+@login_required
 def lista_proveedores(request):
     proveedores = Proveedor.objects.all()
     context = {'proveedores': proveedores}
     return render(request, 'lista_proveedores.html', context)
 
+@login_required
 def eliminar_cliente(request, cliente_id):
     cliente = get_object_or_404(Cliente, id=cliente_id)
     if request.method == 'POST':
