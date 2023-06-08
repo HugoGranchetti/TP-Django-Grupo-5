@@ -105,7 +105,16 @@ def lista_clientes(request):
 @login_required
 def lista_proveedores(request):
     proveedores = Proveedor.objects.all()
-    context = {'proveedores': proveedores}
+    
+    if request.method == 'POST':
+        proveedor_id = request.POST.get('proveedor_id')
+        proveedor = Proveedor.objects.get(pk=proveedor_id)
+        proveedor.delete()
+        return redirect('lista_proveedores')
+
+    context = {
+        'proveedores': proveedores
+    }
     return render(request, 'lista_proveedores.html', context)
 
 @login_required
@@ -141,3 +150,9 @@ def editar_cliente(request, cliente_id):
         form = ClienteForm(instance=cliente)
 
     return render(request, 'editar_cliente.html', {'form': form})
+def eliminar_proveedor(request):
+    if request.method == 'POST':
+        proveedor_id = request.POST.get('proveedor_id')
+        proveedor = Proveedor.objects.get(pk=proveedor_id)
+        proveedor.delete()
+    return redirect('lista_proveedores')
