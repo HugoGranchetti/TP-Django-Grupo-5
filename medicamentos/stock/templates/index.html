@@ -7,7 +7,11 @@
 <p>Durante estos años hemos transformamos a la empresa en una gran familia. Fue un trabajo 
   en conjunto con nuestros empleados, a los cuales echariamos a patadas con todo gusto, que en estos 35 
   minutos demostraron su incansable voluntad de no hacer nada.</p>
-
+  {% if not user.is_authenticated %}
+  <h2 id="r"> Registrarse</h2>
+  <p>Si necesita registrase , comuniquese con el administrador del sitio, admin@argfarm.com
+  </p>
+  {% endif %}
 <h1>Información para consumidores</h1>
 <p> <ul>Recomendaciones
   <li>Adquirí los medicamentos en farmacias habilitadas.</li>

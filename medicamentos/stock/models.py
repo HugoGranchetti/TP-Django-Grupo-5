@@ -38,6 +38,6 @@ class Pedido(models.Model):
     proveedor=models.ManyToManyField(Proveedor)
     archivo = models.FileField(upload_to='uploads/', blank=True, null=True)
 
-class stock_User(models.Model):
+class User(models.Model):
     email = models.EmailField(unique=True)
     password = models.CharField(max_length=128)
