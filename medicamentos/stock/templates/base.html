@@ -18,6 +18,9 @@
     <header>
         <h1>ARGPharm</h1>
         <p>¡El mejor socio para tu farmacia!</p>
+        {% if user.is_authenticated %}
+        <p>Bienvenido, {{ user.username }}</p>
+    {% endif %}
     </header>
     <nav>
         <ul>

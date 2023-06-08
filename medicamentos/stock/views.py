@@ -11,6 +11,9 @@ def inicio(request):
     return render(request, 'inicio.html')
 def index(request):
     return render(request, 'index.html')
+def logout_view(request):
+    logout(request)
+    return redirect('index.html')
 @login_required
 def lista_medicamentos(request):
     medicamentos = Medicamento.objects.all()
@@ -126,6 +129,3 @@ def register(request):
 @login_required
 def profile_view(request):
     return render(request, 'profile.html')
-def logout_view(request):
-    logout(request)
-    return redirect('inicio')
