@@ -2,21 +2,75 @@
 
 {% block content %}
   <h2>Cargar pedido</h2>
-  <form method="post" >
+  <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Guardar</button>
-  </form>
-  {% if form.errors %}
-    <div class="alert alert-danger">
-      <strong>Oops!</strong> Hubo un error al procesar el formulario:
-      <ul>
-        {% for field_errors in form.errors.values %}
-          {% for error in field_errors %}
+    {{ form.non_field_errors }}
+    <div class="form-group">
+      {{ form.nombre_cliente.label_tag }}
+      {{ form.nombre_cliente }}
+      {% if form.nombre_cliente.errors %}
+        <ul class="errorlist">
+          {% for error in form.nombre_cliente.errors %}
             <li>{{ error }}</li>
           {% endfor %}
-        {% endfor %}
-      </ul>
+        </ul>
+      {% endif %}
     </div>
-  {% endif %}
+    <div class="form-group">
+      {{ form.fecha_pedido.label_tag }}
+      {{ form.fecha_pedido }}
+      {% if form.fecha_pedido.errors %}
+        <ul class="errorlist">
+          {% for error in form.fecha_pedido.errors %}
+            <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </div>
+    <div class="form-group">
+      {{ form.cantidad.label_tag }}
+      {{ form.cantidad }}
+      {% if form.cantidad.errors %}
+        <ul class="errorlist">
+          {% for error in form.cantidad.errors %}
+            <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </div>
+    <div class="form-group">
+      {{ form.productos.label_tag }}
+      {{ form.productos }}
+      {% if form.productos.errors %}
+        <ul class="errorlist">
+          {% for error in form.productos.errors %}
+            <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </div>
+    <div class="form-group">
+      {{ form.proveedor.label_tag }}
+      {{ form.proveedor }}
+      {% if form.proveedor.errors %}
+        <ul class="errorlist">
+          {% for error in form.proveedor.errors %}
+            <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </div>
+    <div class="form-group">
+      {{ form.archivo.label_tag }}
+      {{ form.archivo }}
+      {% if form.archivo.errors %}
+        <ul class="errorlist">
+          {% for error in form.archivo.errors %}
+            <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </div>
+    <button class="btn btn-primary" type="submit">Guardar</button>
+  </form>
 {% endblock %}

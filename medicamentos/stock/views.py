@@ -49,7 +49,7 @@ def logout_view(request):
     logout(request)
     return redirect('inicio')
 
-@require_POST
+
 @login_required
 def cargar_pedido(request):
     form = PedidoForm(request.POST)
@@ -129,3 +129,15 @@ def register(request):
 @login_required
 def profile_view(request):
     return render(request, 'profile.html')
+def editar_cliente(request, cliente_id):
+    cliente = get_object_or_404(Cliente, id=cliente_id)
+
+    if request.method == 'POST':
+        form = ClienteForm(request.POST, instance=cliente)
+        if form.is_valid():
+            form.save()
+            return redirect('lista_clientes')
+    else:
+        form = ClienteForm(instance=cliente)
+
+    return render(request, 'editar_cliente.html', {'form': form})
