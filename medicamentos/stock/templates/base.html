@@ -7,11 +7,8 @@
     {% block extra_head %}
     
     {% endblock %}
-    <link rel="stylesheet" type="text/css" href="{% static 'stock/css/estilos.css' %}">  
-    {% block extra_scripts %}
-    <script src="{% static 'stock/js/script.js' %}"></script>
-    {% endblock %}
-
+    <link rel="stylesheet" type="text/css" href="{% static 'stock/css/estilos.css' %}">
+    <script src="{% static 'stock/js/script.js' %}"></script>  
 </head>
 
 <body>
@@ -20,24 +17,58 @@
         <p>¡El mejor socio para tu farmacia!</p>
         {% if user.is_authenticated %}
         <p>Bienvenido, {{ user.username }}</p>
-    {% endif %}
+        {% endif %}
     </header>
     <nav>
-        <ul>
-            <li><a href="{% url 'inicio' %}">Inicio</a></li>
+        <ul class="accordion">
+            <li class="accordion-item">
+                <div class="toggle" onclick="toggleAccordion(0)">Inicio</div>
+                <div class="content">
+                    <a href="{% url 'inicio' %}">Página de inicio</a>
+                </div>
+            </li>
             {% if user.is_authenticated %}
-            <li><a href="{% url 'lista_medicamentos' %}">Medicamentos</a></li>
-                <li><a href="{% url 'alta_medicamento' %}">Alta de Medicamento</a></li>
-                <li><a href="{% url 'pedido' %}">Nuevo Pedido</a></li>
-                <li><a href="{% url 'lista_pedidos' %}">Listado de Pedidos</a></li>
-                <li><a href="{% url 'lista_clientes' %}">Clientes</a></li>
-                <li><a href="{% url 'alta_cliente' %}">Alta cliente</a></li>
-                <li><a href="{% url 'lista_proveedores' %}">Proveedores</a></li>
-                <li><a href="{% url 'alta_proveedor' %}">Alta de Proveedor</a></li>
-                <li><a href="{% url 'logout' %}">Cerrar sesión</a></li> 
+            <li class="accordion-item">
+                <div class="toggle" onclick="toggleAccordion(1)">Medicamentos</div>
+                <div class="content">
+                    <a href="{% url 'lista_medicamentos' %}">Lista de Medicamentos</a>
+                    <a href="{% url 'alta_medicamento' %}">Nuevo Medicamento</a>
+                </div>
+            </li>
+            <li class="accordion-item">
+                <div class="toggle" onclick="toggleAccordion(2)">Pedidos</div>
+                <div class="content">
+                    <a href="{% url 'pedido' %}">Nuevo Pedido</a>
+                    <a href="{% url 'lista_pedidos' %}">Listado de Pedidos</a>
+                </div>
+            </li>
+            <li class="accordion-item">
+                <div class="toggle" onclick="toggleAccordion(3)">Clientes</div>
+                <div class="content">
+                    <a href="{% url 'lista_clientes' %}">Lista de Clientes</a>
+                    <a href="{% url 'alta_cliente' %}">Alta de Cliente</a>
+                </div>
+            </li>
+            <li class="accordion-item">
+                <div class="toggle" onclick="toggleAccordion(4)">Proveedores</div>
+                <div class="content">
+                    <a href="{% url 'lista_proveedores' %}">Lista de Proveedores</a>
+                    <a href="{% url 'alta_proveedor' %}">Alta de Proveedor</a>
+                </div>
+            </li>
+            <li class="accordion-item">
+                <div class="toggle" onclick="toggleAccordion(5)">Cerrar sesión</div>
+                <div class="content">
+                    <a href="{% url 'logout' %}">Cerrar sesión</a>
+                </div>
+            </li>
             {% else %}
-                <li><a href="{% url 'login' %}">Iniciar sesión</a></li>
-                
+            <li class="accordion-item">
+                <div class="toggle" onclick="toggleAccordion(1)">Iniciar sesión</div>
+                <div class="content">
+                    <a href="{% url 'login' %}">Iniciar sesión</a>
+                </div>
+            </li>
             {% endif %}
         </ul>
     </nav>
@@ -49,4 +80,8 @@
     </footer>
 </body>
 </html>
+
+
+
+
 

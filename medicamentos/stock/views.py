@@ -11,9 +11,10 @@ def inicio(request):
     return render(request, 'inicio.html')
 def index(request):
     return render(request, 'index.html')
+
 def logout_view(request):
     logout(request)
-    return redirect('index.html')
+    return redirect('inicio.html')
 @login_required
 def lista_medicamentos(request):
     medicamentos = Medicamento.objects.all()
@@ -90,7 +91,7 @@ def alta_proveedor(request):
         form = ProveedorForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('alta_proveedor')
+            return redirect('lista_proveedores')
     else:
         form = ProveedorForm()
     context = {'form': form}

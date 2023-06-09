@@ -1,55 +1,56 @@
 body {
-  background-color: #6ce6b1;
+  background-image: url("{% 'static/stock/img/mar.jpg' %} ") ;
+  background-color: #a4cec0;
+  background-color: (#a4cec0, #1578c7);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   height: 100vh;
+  font-style: italic;
 }
-
+nav.collapsed {
+  display: none;
+}
 .button-group {
   display: inline-block;
+  background-color: #1578c7;
 }
-
 .button-form {
   display: inline-block;
   margin-left: 10px;
 }
-
 .delete-button,
 .edit-button {
-  background-color: #007BFF;
-  color: #FFFFFF;
+  background-color: #23a267;
+  color: #f4ed52;
   border: none;
   padding: 5px 10px;
   border-radius: 5px;
 }
-
 .delete-button {
-  background-color: #FF0000;
+  background-color: #d13030;
 }
-
 /* Estilos CSS para el encabezado y el pie de página */
 header, footer {
-  background-color: #226608;
+  background-color: #415d7f;
   padding: 20px;
   text-align: center;
 }
-
 /* Estilos CSS para los títulos de la página */
 h1 {
   font-size: 2.5em;
   margin-bottom: 0;
+  color: #f4a652;
 }
-
 h2 {
   font-size: 1.5em;
   margin-top: 0;
+  color: #f4a652;
 }
-
 /* Estilo para la barra de navegación */
 nav {
-  background-color: #333;
-  color: #fff;
+  background-color: #0d2c52;
+  color:#f4a652;
   padding: 10px;
   text-align: center;
 }
@@ -58,21 +59,23 @@ nav ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
+  color: #333;
 }
 
 nav ul li {
   display: inline-block;
   margin-right: 10px;
+  color: #333;
 }
 
 nav a {
-  color: #fff;
+  color: #d55d35;
   text-decoration: none;
   padding: 10px;
 }
 
 nav a:hover {
-  background-color: #555;
+  background-color: #1c4d8c;
 }
 
 /* Estilos para la tabla */
@@ -81,20 +84,20 @@ nav a:hover {
 }
 
 .table thead th {
-  background-color: #555;
-  color: #fff;
+  background-color: #1c4d8c;
+  color: #992614;
 }
 
 .table tbody td {
-  background-color: #baf6bb;
+  background-color: #d4e8e0;
 }
 
 .table tbody tr:nth-child(odd) td {
-  background-color: #c9fbd6;
+  background-color: #c3e2d8;
 }
 
 .table tbody tr:hover td {
-  background-color: #8ae28b;
+  background-color: #a4cec0;
 }
 
 /* Estilos adicionales */
@@ -104,4 +107,41 @@ nav a:hover {
 
 main {
   padding: 20px;
+}
+
+/* Estilos para el menú acordeón */
+.accordion {
+  list-style: none;
+  padding: 0;
+  color: #000;
+}
+
+.accordion li {
+  margin-bottom: 10px;
+  color: #000;
+}
+
+.accordion li .toggle {
+  display: block;
+  background-color: #5bbfb1;
+  color: #000;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.accordion li .content {
+  display: none;
+  padding: 10px;
+  background-color: #5bbfb1;
+  color: #000;
+}
+
+.accordion li.active .toggle {
+  background-color: #5bbfb1;
+  color: #000;
+}
+
+.accordion li.active .content {
+  display: block;
+  color: #000;
 }

@@ -24,9 +24,10 @@ urlpatterns = [
        
     path('accounts/', include('django.contrib.auth.urls')),
     path('', include('stock.urls')), 
-  
-    
+    path('logout', auth_views.LogoutView.as_view(template_name='index.html'), name='logout'),
 ]
+    
+
 
 
 
