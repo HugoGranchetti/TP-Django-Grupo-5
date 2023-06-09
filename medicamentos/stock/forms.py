@@ -2,9 +2,9 @@ from django import forms
 from .models import Medicamento
 from .models import Pedido
 from django.forms.widgets import SelectDateWidget
+from django.utils import timezone
 import datetime
-from .models import Cliente, Proveedor
-from .models import User
+from .models import User, Pedido, Medicamento, Cliente, Proveedor
 
 class ClienteForm(forms.ModelForm):
     class Meta:
@@ -32,22 +32,6 @@ class MedicamentoForm(forms.ModelForm):
     class Meta:
         model = Medicamento
         fields = ['nombre', 'cantidad', 'fecha_vencimiento', 'proveedor', 'precio', 'lote']
-
-from django import forms
-from django.forms.widgets import SelectDateWidget
-from django.utils import timezone
-import datetime
-
-from .models import Pedido, Medicamento, Cliente, Proveedor
-
-
-from django import forms
-from django.forms.widgets import SelectDateWidget
-from django.utils import timezone
-import datetime
-
-from .models import Pedido, Medicamento, Cliente, Proveedor
-
 
 class PedidoForm(forms.ModelForm):
     productos = forms.ModelChoiceField(
@@ -83,8 +67,6 @@ class PedidoForm(forms.ModelForm):
             pedido.save()
         pedido.productos.add(self.cleaned_data['productos'].id)
         return pedido
-
-
     
 class RegistrationForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput())

@@ -9,19 +9,24 @@ from django.contrib import messages
 
 def inicio(request):
     return render(request, 'inicio.html')
+
 def index(request):
     return render(request, 'index.html')
+
 def logout_view(request):
     logout(request)
     return redirect('index.html')
+
 @login_required
 def lista_medicamentos(request):
     medicamentos = Medicamento.objects.all()
     return render(request, 'lista_medicamentos.html', {'medicamentos': medicamentos})
+
 @login_required
 def detalle_medicamento(request, medicamento_id):
     medicamento = get_object_or_404(Medicamento, pk=medicamento_id)
     return render(request, 'detalle_medicamento.html', {'medicamento': medicamento})
+
 @permission_required('stock.add_medicamento')
 def alta_medicamento(request):
     if request.method == 'POST':
@@ -44,11 +49,6 @@ def editar_medicamento(request, medicamento_id):
     else:
         form = MedicamentoForm(instance=medicamento)
     return render(request, 'editar_medicamento.html', {'medicamento': medicamento, 'form': form})
-
-def logout_view(request):
-    logout(request)
-    return redirect('inicio')
-
 
 @login_required
 def cargar_pedido(request):
@@ -135,9 +135,11 @@ def register(request):
     else:
         form = RegistrationForm()
     return render(request, 'register.html', {'registration_form': form})
+
 @login_required
 def profile_view(request):
     return render(request, 'profile.html')
+
 def editar_cliente(request, cliente_id):
     cliente = get_object_or_404(Cliente, id=cliente_id)
 
@@ -150,6 +152,7 @@ def editar_cliente(request, cliente_id):
         form = ClienteForm(instance=cliente)
 
     return render(request, 'editar_cliente.html', {'form': form})
+
 def eliminar_proveedor(request):
     if request.method == 'POST':
         proveedor_id = request.POST.get('proveedor_id')
