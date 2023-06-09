@@ -50,7 +50,7 @@ def editar_medicamento(request, medicamento_id):
         form = MedicamentoForm(instance=medicamento)
     return render(request, 'editar_medicamento.html', {'medicamento': medicamento, 'form': form})
 
-@login_required
+@permission_required('stock.add_pedido')
 def cargar_pedido(request):
     form = PedidoForm(request.POST)
     if form.is_valid():
@@ -64,7 +64,7 @@ def lista_pedidos(request):
     context = {'pedidos': pedidos}
     return render(request, 'lista_pedidos.html', context)
 
-@login_required
+@permission_required('stock.delete_medicamento')
 def eliminar_medicamento(request, pk):
     medicamento = get_object_or_404(Medicamento, id=pk)
     if request.method == 'POST':
@@ -72,7 +72,7 @@ def eliminar_medicamento(request, pk):
         return redirect('lista_medicamentos')
     return render(request, 'eliminar_medicamento.html', {'medicamento': medicamento})
 
-@login_required
+@permission_required('stock.add_cliente')
 def alta_cliente(request):
     if request.method == 'POST':
         form = ClienteForm(request.POST)
@@ -84,7 +84,7 @@ def alta_cliente(request):
     context = {'form': form}
     return render(request, 'alta_cliente.html', context)
 
-@login_required
+@permission_required('stock.add_proveedor')
 def alta_proveedor(request):
     if request.method == 'POST':
         form = ProveedorForm(request.POST)
@@ -117,7 +117,7 @@ def lista_proveedores(request):
     }
     return render(request, 'lista_proveedores.html', context)
 
-@login_required
+@permission_required('stock.delete_cliente')
 def eliminar_cliente(request, cliente_id):
     cliente = get_object_or_404(Cliente, id=cliente_id)
     if request.method == 'POST':
@@ -140,6 +140,7 @@ def register(request):
 def profile_view(request):
     return render(request, 'profile.html')
 
+@permission_required('stock.change_cliente')
 def editar_cliente(request, cliente_id):
     cliente = get_object_or_404(Cliente, id=cliente_id)
 
@@ -153,6 +154,7 @@ def editar_cliente(request, cliente_id):
 
     return render(request, 'editar_cliente.html', {'form': form})
 
+@permission_required('stock.delete_proveedor')
 def eliminar_proveedor(request):
     if request.method == 'POST':
         proveedor_id = request.POST.get('proveedor_id')

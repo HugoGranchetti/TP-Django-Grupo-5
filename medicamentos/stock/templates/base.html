@@ -19,25 +19,30 @@
         <h1>ARGPharm</h1>
         <p>¡El mejor socio para tu farmacia!</p>
         {% if user.is_authenticated %}
-        <p>Bienvenido, {{ user.username }}</p>
+        <p>Bienvenido, {{ user.first_name }}</p>
     {% endif %}
     </header>
     <nav>
         <ul>
             <li><a href="{% url 'inicio' %}">Inicio</a></li>
             {% if user.is_authenticated %}
-            <li><a href="{% url 'lista_medicamentos' %}">Medicamentos</a></li>
-                <li><a href="{% url 'alta_medicamento' %}">Alta de Medicamento</a></li>
+                <li><a href="{% url 'lista_medicamentos' %}">Medicamentos</a></li>
+                {% if perms.stock.add_medicamento %}
+                    <li><a href="{% url 'alta_medicamento' %}">Alta de Medicamento</a></li>
+                {% endif %}
                 <li><a href="{% url 'pedido' %}">Nuevo Pedido</a></li>
                 <li><a href="{% url 'lista_pedidos' %}">Listado de Pedidos</a></li>
-                <li><a href="{% url 'lista_clientes' %}">Clientes</a></li>
-                <li><a href="{% url 'alta_cliente' %}">Alta cliente</a></li>
+                {% if perms.stock.add_cliente %}
+                    <li><a href="{% url 'lista_clientes' %}">Clientes</a></li>
+                    <li><a href="{% url 'alta_cliente' %}">Alta cliente</a></li>
+                {% endif %}
                 <li><a href="{% url 'lista_proveedores' %}">Proveedores</a></li>
-                <li><a href="{% url 'alta_proveedor' %}">Alta de Proveedor</a></li>
+                {% if perms.stock.add_proveedor %}
+                    <li><a href="{% url 'alta_proveedor' %}">Alta de Proveedor</a></li>
+                {% endif %}
                 <li><a href="{% url 'logout' %}">Cerrar sesión</a></li> 
             {% else %}
                 <li><a href="{% url 'login' %}">Iniciar sesión</a></li>
-                
             {% endif %}
         </ul>
     </nav>
