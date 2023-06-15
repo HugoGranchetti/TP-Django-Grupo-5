@@ -11,6 +11,7 @@
             <tr>
                 <th>Nombre</th>
                 <th>Teléfono</th>
+                <th>Mail</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -19,6 +20,7 @@
                 <tr>
                     <td>{{ proveedor.nombre }}</td>
                     <td>{{ proveedor.telefono }}</td>
+                    <td>{{ proveedor.mail }}</td>
                     <td>
                         <a href="{% url 'editar_proveedor' proveedor.id %}"><button class="action-button edit-button">Editar</button></a>
                         <a href="{% url 'detalle_proveedor' proveedor.id %}"><button class="action-button details-button">Detalles</button></a>
