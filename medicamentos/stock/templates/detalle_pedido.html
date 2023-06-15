@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Detalle del pedido</h2>
+  <p>ID del pedido: {{ pedido.id }}</p>
+  <p>Nombre del cliente: {{ pedido.nombre_cliente }}</p>
+  <p>Fecha del pedido: {{ pedido.fecha_pedido }}</p>
+  <p>Cantidad: {{ pedido.cantidad }}</p>
+  <p>Productos: {{ pedido.productos }}</p>
+  <p>Proveedor: {{ pedido.proveedor }}</p>
+  {% if pedido.archivo %}
+    <p>Archivo adjunto: <a href="{{ pedido.archivo.url }}">{{ pedido.archivo.name }}</a></p>
+  {% else %}
+    <p>No se adjuntó ningún archivo.</p>
+  {% endif %}
+{% endblock %}

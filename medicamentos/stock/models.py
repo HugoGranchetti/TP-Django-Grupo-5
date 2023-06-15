@@ -34,7 +34,7 @@ class Pedido(models.Model):
     nombre_cliente = models.CharField(max_length=50)
     fecha_pedido = models.DateField()
     productos = models.ManyToManyField(Medicamento)
-    cantidad = models.IntegerField()
+    cantidad = models.IntegerField(default=0)
     proveedor=models.ManyToManyField(Proveedor)
     archivo = models.FileField(upload_to='uploads/', blank=True, null=True)
 

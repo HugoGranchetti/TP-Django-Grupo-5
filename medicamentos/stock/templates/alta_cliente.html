@@ -6,10 +6,26 @@
 
 {% block content %}
     <h1>Alta de cliente</h1>
-    <form method="post">
+    <form method="post" class="form">
         {% csrf_token %}
-        {{ form.as_p }}
-  <button type="submit" class="btn btn-primary">Alta</button>
+        <div class="form-group">
+            <label for="{{ form.nombre.id_for_label }}">Nombre:</label>
+            {{ form.nombre }}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.telefono.id_for_label }}">Teléfono:</label>
+            {{ form.telefono }}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.cuit.id_for_label }}">CUIT:</label>
+            {{ form.cuit }}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.mail.id_for_label }}">Correo electrónico:</label>
+            {{ form.mail }}
+        </div>
+        <button type="submit" class="btn btn-primary">Alta</button>
     </form>
 {% endblock %}
+
 

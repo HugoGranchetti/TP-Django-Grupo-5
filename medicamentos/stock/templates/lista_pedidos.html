@@ -1,11 +1,13 @@
 {% extends 'base.html' %}
+
 {% block content %}
     <h2>Listado de Pedidos</h2>
-    <table>
+    <table class="table">
         <thead>
             <tr>
                 <th>Fecha</th>
                 <th>Nombre del Cliente</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
@@ -13,8 +15,17 @@
             <tr>
                 <td>{{ pedido.fecha_pedido }}</td>
                 <td>{{ pedido.nombre_cliente }}</td>
+                <td>
+                    <a href="{% url 'detalle_pedido' pedido.id %}"><button class="action-button details-button">Detalles</button></a>
+                    <a href="{% url 'editar_pedido' pedido.id %}"><button class="action-button edit-button">Editar</button></a>
+                    <form action="{% url 'eliminar_pedido' pedido.id %}" method="POST" style="display: inline;">
+                        {% csrf_token %}
+                        <button class="action-button delete-button" type="submit">Eliminar</button>
+                    </form>
+                </td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
 {% endblock %}
+

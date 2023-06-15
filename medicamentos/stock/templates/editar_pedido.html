@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Editar pedido - {{ pedido.nombre_cliente }}
+{% endblock %}
+
+{% block content %}
+    <h1>Editar pedido - {{ pedido.nombre_cliente }}</h1>
+
+    <form method="POST" >
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button   class="save-button"  type="submit">Guardar cambios</button>
+    </form>
+{% endblock %}

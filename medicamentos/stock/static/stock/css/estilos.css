@@ -1,56 +1,31 @@
+/* Estilos generales */
+:root {
+  --color-primary: #f4a652;
+  --color-secondary:#a4cec0 ;
+  --color-background:  #1578c7;
+  --color-background-gradient: linear-gradient(var(--color-background), var(--color-secondary));
+  --color-text: #000000;
+}
+
 body {
-  background-image: url("{% 'static/stock/img/mar.jpg' %} ") ;
-  background-color: #a4cec0;
-  background-color: (#a4cec0, #1578c7);
+  background-image: var(--color-background-gradient);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   height: 100vh;
   font-style: italic;
+  transition: background-color 0.5s ease;
+  color: var(--color-text);
 }
+
+/* Estilos para la barra de navegación */
 nav.collapsed {
   display: none;
 }
-.button-group {
-  display: inline-block;
-  background-color: #1578c7;
-}
-.button-form {
-  display: inline-block;
-  margin-left: 10px;
-}
-.delete-button,
-.edit-button {
-  background-color: #23a267;
-  color: #f4ed52;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 5px;
-}
-.delete-button {
-  background-color: #d13030;
-}
-/* Estilos CSS para el encabezado y el pie de página */
-header, footer {
-  background-color: #415d7f;
-  padding: 20px;
-  text-align: center;
-}
-/* Estilos CSS para los títulos de la página */
-h1 {
-  font-size: 2.5em;
-  margin-bottom: 0;
-  color: #f4a652;
-}
-h2 {
-  font-size: 1.5em;
-  margin-top: 0;
-  color: #f4a652;
-}
-/* Estilo para la barra de navegación */
+
 nav {
   background-color: #0d2c52;
-  color:#f4a652;
+  color: var(--color-primary);
   padding: 10px;
   text-align: center;
 }
@@ -59,13 +34,11 @@ nav ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  color: #333;
 }
 
 nav ul li {
   display: inline-block;
   margin-right: 10px;
-  color: #333;
 }
 
 nav a {
@@ -84,29 +57,27 @@ nav a:hover {
 }
 
 .table thead th {
-  background-color: #1c4d8c;
+  background-color: #6b85a7;
   color: #992614;
 }
 
 .table tbody td {
-  background-color: #d4e8e0;
+  background-color: #a2e1db;
 }
 
 .table tbody tr:nth-child(odd) td {
-  background-color: #c3e2d8;
+  background-color: #a2e1db;
 }
 
 .table tbody tr:hover td {
-  background-color: #a4cec0;
+  background-color: #a0cdbe;
 }
 
 /* Estilos adicionales */
-.r {
-  color: red;
-}
 
 main {
   padding: 20px;
+  background-color: #a4cec0;
 }
 
 /* Estilos para el menú acordeón */
@@ -144,4 +115,56 @@ main {
 .accordion li.active .content {
   display: block;
   color: #000;
+}
+
+/* Estilos para los botones */
+
+/* Estilos para el encabezado y el pie de página */
+header, footer {
+  background-color: #415d7f;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Estilos para los títulos de la página */
+h1 {
+  font-size: 2.5em;
+  margin-bottom: 0;
+  color: var(--color-primary);
+}
+
+h2 {
+  font-size: 1.5em;
+  margin-top: 0;
+  color: var(--color-primary);
+}
+
+.button-group form,
+.button-group a {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+/* Estilos para los botones */
+.action-button {
+  display: inline-block;
+}
+
+.delete-button {
+  background-color: #d13030;
+  color: #ffffff;
+}
+
+.edit-button {
+  background-color: #1578c7;
+  color: #ffffff;
+}
+
+.details-button {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.action-button:hover {
+  opacity: 0.8;
 }

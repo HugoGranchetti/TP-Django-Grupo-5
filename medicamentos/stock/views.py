@@ -6,6 +6,10 @@ from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth import authenticate, login, logout
 from django.views.decorators.http import require_POST
 from django.contrib import messages
+from rest_framework import viewsets
+from rest_framework import permissions
+from stock  import serializers
+from .serializers import MedicamentoSerializer
 
 def inicio(request):
     return render(request, 'inicio.html')
@@ -79,7 +83,7 @@ def alta_cliente(request):
         form = ClienteForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('alta_cliente')
+            return redirect('lista_clientes')
     else:
         form = ClienteForm()
     context = {'form': form}
@@ -157,3 +161,56 @@ def eliminar_proveedor(request):
         proveedor = Proveedor.objects.get(pk=proveedor_id)
         proveedor.delete()
     return redirect('lista_proveedores')
+@login_required
+def detalle_cliente(request, cliente_id):
+    cliente = get_object_or_404(Cliente, id=cliente_id)
+    return render(request, 'detalle_cliente.html', {'cliente': cliente})
+
+class MedicamentoViewSet(viewsets.ModelViewSet):
+    queryset = Medicamento.objects.all()
+    serializer_class = serializers.MedicamentoSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+@login_required
+def editar_pedido(request, pedido_id):
+    pedido = get_object_or_404(Pedido, pk=pedido_id)
+
+    if request.method == 'POST':
+        form = PedidoForm(request.POST, instance=pedido)
+        if form.is_valid():
+            form.save()
+            return redirect('detalle_pedido', pedido_id=pedido.id)
+    else:
+        form = PedidoForm(instance=pedido)
+
+    return render(request, 'editar_pedido.html', {'pedido': pedido, 'form': form})
+@login_required
+def eliminar_pedido(request, pedido_id):
+    pedido = get_object_or_404(Pedido, pk=pedido_id)
+
+    if request.method == 'POST':
+        pedido.delete()
+        return redirect('lista_pedidos')
+
+    return render(request, 'eliminar_pedido.html', {'pedido': pedido})
+@login_required
+def detalle_pedido(request, pedido_id):
+    pedido = get_object_or_404(Pedido, pk=pedido_id)
+    return render(request, 'detalle_pedido.html', {'pedido': pedido})
+
+@login_required
+def editar_proveedor(request, proveedor_id):
+    proveedor = get_object_or_404(Proveedor, id=proveedor_id)
+
+    if request.method == 'POST':
+        form = ProveedorForm(request.POST, instance=proveedor)
+        if form.is_valid():
+            form.save()
+            return redirect('lista_proveedores')
+    else:
+        form = ProveedorForm(instance=proveedor)
+
+    return render(request, 'editar_proveedor.html', {'form': form})
+@login_required
+def detalle_proveedor(request, proveedor_id):
+    proveedor = get_object_or_404(Proveedor, id=proveedor_id)
+    return render(request, 'detalle_proveedor.html', {'proveedor': proveedor})
