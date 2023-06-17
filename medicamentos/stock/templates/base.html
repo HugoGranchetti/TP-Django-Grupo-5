@@ -31,7 +31,9 @@
                     <li><a href="{% url 'alta_medicamento' %}">Alta de Medicamento</a></li>
                 {% endif %}
                 <li><a href="{% url 'pedido' %}">Nuevo Pedido</a></li>
-                <li><a href="{% url 'lista_pedidos' %}">Listado de Pedidos</a></li>
+                {% if perms.stock.view_pedido %}
+                    <li><a href="{% url 'lista_pedidos' %}">Listado de Pedidos</a></li>
+                {% endif %}
                 {% if perms.stock.add_cliente %}
                     <li><a href="{% url 'lista_clientes' %}">Clientes</a></li>
                     <li><a href="{% url 'alta_cliente' %}">Alta cliente</a></li>

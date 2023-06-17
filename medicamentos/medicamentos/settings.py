@@ -76,8 +76,12 @@ WSGI_APPLICATION = 'medicamentos.wsgi.application'
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": "mydatabase",
+        "ENGINE": "django.db.backends.postgresql_psycopg2",
+        "NAME": "TPDjango",
+        "USER": "postgres",
+        "PASSWORD": "hgranchetti",
+        "HOST": "127.0.0.1",
+        "PORT": "5432",
     }
 }
 
