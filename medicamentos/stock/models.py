@@ -1,8 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 
-# Create your models here.
-
 class Empresa(models.Model):
     nombre = models.CharField(max_length=100, verbose_name="Nombre", null=True)
     mail = models.EmailField(max_length=100, verbose_name="E-mail", null=True)

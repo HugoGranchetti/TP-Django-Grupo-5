@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Detalles del proveedor - {{ proveedor.nombre }}
+{% endblock %}
+
+{% block content %}
+    <h1>Detalles del proveedor - {{ proveedor.nombre }}</h1>
+
+    <ul>
+        <li><strong>Nombre:</strong> {{ proveedor.nombre }}</li>
+        <li><strong>E-mail:</strong> {{ proveedor.mail }}</li>
+        <li><strong>Teléfono:</strong> {{ proveedor.telefono }}</li>
+        <li><strong>País:</strong> {{ proveedor.pais }}</li>
+    </ul>
+{% endblock %}

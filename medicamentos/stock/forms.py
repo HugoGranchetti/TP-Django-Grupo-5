@@ -70,14 +70,17 @@ class PedidoForm(forms.ModelForm):
     
 class RegistrationForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput())
+    
     class Meta:
         model = User
         fields = ['email', 'password']
+   
     def clean_email(self):
         email = self.cleaned_data.get('email')
         if User.objects.filter(email=email).exists():
             raise forms.ValidationError("Este correo electrónico ya está en uso.")
         return email
+   
     def save(self, commit=True):
         user = super(RegistrationForm, self).save(commit=False)
         user.set_password(self.cleaned_data["password"])

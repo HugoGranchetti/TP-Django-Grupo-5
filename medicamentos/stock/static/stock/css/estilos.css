@@ -1,55 +1,31 @@
+/* Estilos generales */
+:root {
+  --color-primary: #10006d;
+  --color-secondary:#a4cec0 ;
+  --color-background:  #1578c7;
+  --color-background-gradient: linear-gradient(var(--color-background), var(--color-secondary));
+  --color-text: #000000;
+}
+
 body {
-  background-color: #6ce6b1;
+  background-image: var(--color-background-gradient);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   height: 100vh;
+  font-style: italic;
+  transition: background-color 0.5s ease;
+  color: var(--color-text);
 }
 
-.button-group {
-  display: inline-block;
+/* Estilos para la barra de navegación */
+nav.collapsed {
+  display: none;
 }
 
-.button-form {
-  display: inline-block;
-  margin-left: 10px;
-}
-
-.delete-button,
-.edit-button {
-  background-color: #007BFF;
-  color: #FFFFFF;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 5px;
-}
-
-.delete-button {
-  background-color: #FF0000;
-}
-
-/* Estilos CSS para el encabezado y el pie de página */
-header, footer {
-  background-color: #226608;
-  padding: 20px;
-  text-align: center;
-}
-
-/* Estilos CSS para los títulos de la página */
-h1 {
-  font-size: 2.5em;
-  margin-bottom: 0;
-}
-
-h2 {
-  font-size: 1.5em;
-  margin-top: 0;
-}
-
-/* Estilo para la barra de navegación */
 nav {
-  background-color: #333;
-  color: #fff;
+  background-color: #0d2c52;
+  color: var(--color-primary);
   padding: 10px;
   text-align: center;
 }
@@ -66,13 +42,13 @@ nav ul li {
 }
 
 nav a {
-  color: #fff;
+  color: #10006d;
   text-decoration: none;
   padding: 10px;
 }
 
 nav a:hover {
-  background-color: #555;
+  background-color: #1c4d8c;
 }
 
 /* Estilos para la tabla */
@@ -81,27 +57,111 @@ nav a:hover {
 }
 
 .table thead th {
-  background-color: #555;
-  color: #fff;
+  background-color: #6b85a7;
+  color: #10006d;
 }
 
 .table tbody td {
-  background-color: #baf6bb;
+  background-color: #a2e1db;
 }
 
 .table tbody tr:nth-child(odd) td {
-  background-color: #c9fbd6;
+  background-color: #a2e1db;
 }
 
 .table tbody tr:hover td {
-  background-color: #8ae28b;
+  background-color: #a0cdbe;
 }
 
 /* Estilos adicionales */
-.r {
-  color: red;
-}
-
 main {
   padding: 20px;
+  background-color: #a4cec0;
+}
+
+/* Estilos para el menú acordeón */
+.accordion {
+  list-style: none;
+  padding: 0;
+  color: #000;
+}
+
+.accordion li {
+  margin-bottom: 10px;
+  color: #000;
+}
+
+.accordion li .toggle {
+  display: block;
+  background-color: #5bbfb1;
+  color: #000;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.accordion li .content {
+  display: none;
+  padding: 10px;
+  background-color: #5bbfb1;
+  color: #000;
+}
+
+.accordion li.active .toggle {
+  background-color: #5bbfb1;
+  color: #000;
+}
+
+.accordion li.active .content {
+  display: block;
+  color: #000;
+}
+
+/* Estilos para el encabezado y el pie de página */
+header, footer {
+  background-color: #415d7f;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Estilos para los títulos de la página */
+h1 {
+  font-size: 2.5em;
+  margin-bottom: 0;
+  color: var(--color-primary);
+}
+
+h2 {
+  font-size: 1.5em;
+  margin-top: 0;
+  color: var(--color-primary);
+}
+
+.button-group form,
+.button-group a {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+/* Estilos para los botones */
+.action-button {
+  display: inline-block;
+}
+
+.delete-button {
+  background-color: #d13030;
+  color: #ffffff;
+}
+
+.edit-button {
+  background-color: #1578c7;
+  color: #ffffff;
+}
+
+.details-button {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.action-button:hover {
+  opacity: 0.8;
 }

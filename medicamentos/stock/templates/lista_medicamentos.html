@@ -1,11 +1,10 @@
 {% extends 'base.html' %}
 
 {% block title %}
-Título de la página
+    Lista de medicamentos
 {% endblock %}
 
 {% block content %}
-
 <h1>Lista de Medicamentos</h1>
 <table class="table table-bordered">
   <thead>
@@ -30,21 +29,18 @@ Título de la página
       <td>{{ medicamento.proveedor }}</td>
       <td colspan="7">
         <hr>
-        <a href="{% url 'detalle_medicamento' medicamento.id %}" class="btn btn-primary">Detalles</a>
-        <a href="{% url 'editar_medicamento' medicamento.id %}" class="btn btn-secondary">Editar</a>
+        <a href="{% url 'detalle_medicamento' medicamento.id %}"><button class="action-button details-button">Detalles</button></a>
+        <a href="{% url 'editar_medicamento' medicamento.id %}"></a><button class="action-button edit-button">Editar</button></a>
         <form action="{% url 'eliminar_medicamento' medicamento.id %}" method="POST" style="display: inline;">
           {% csrf_token %}
-          <button type="submit" class="btn btn-danger">Eliminar</button>
+          <button type="submit" class="btn btn-danger delete-button">Eliminar</button>
         </form>
       </td>
     </tr>
-
     {% empty %}
-
     <tr>
       <td colspan="7">No hay medicamentos cargados.</td>
     </tr>
-
     {% endfor %}
   </tbody>
 </table>

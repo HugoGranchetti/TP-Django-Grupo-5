@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Detalles del cliente
+{% endblock %}
+
+{% block content %}
+    <h1>Detalles del cliente</h1>
+    <div>
+        <p><strong>Nombre:</strong> {{ cliente.nombre }}</p>
+        <p><strong>Cuit:</strong> {{ cliente.cuit }}</p>
+        <p><strong>Email:</strong> {{ cliente.email }}</p>
+        <p><strong>Telefono:</strong> {{ cliente.telefono }}</p>
+       
+    </div>
+{% endblock %}
