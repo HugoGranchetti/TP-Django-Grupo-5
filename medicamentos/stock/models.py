@@ -26,7 +26,7 @@ class Medicamento(models.Model):
     precio=models.IntegerField(default=0)
     lote=models.IntegerField(default=1)
     def __str__(self):
-        return self.nombre
+        return f"{self.nombre} ({self.proveedor})"
 
 class Pedido(models.Model):
     nombre_cliente = models.CharField(max_length=50)
@@ -35,7 +35,12 @@ class Pedido(models.Model):
     cantidad = models.IntegerField()
     proveedor=models.ManyToManyField(Proveedor)
     archivo = models.FileField(upload_to='uploads/', blank=True, null=True)
+    def __str__(self):
+        proveedores = ', '.join(str(proveedor) for proveedor in self.proveedor.all())
+        return f"{self.fecha_pedido}, {self.nombre_cliente} Proveedores: {proveedores}"
 
 class User(models.Model):
     email = models.EmailField(unique=True)
     password = models.CharField(max_length=128)
+    def __str__(self):
+        return f"{self.email}"

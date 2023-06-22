@@ -31,10 +31,12 @@
         <hr>
         <a href="{% url 'detalle_medicamento' medicamento.id %}"><button class="action-button details-button">Detalles</button></a>
         <a href="{% url 'editar_medicamento' medicamento.id %}"></a><button class="action-button edit-button">Editar</button></a>
-        <form action="{% url 'eliminar_medicamento' medicamento.id %}" method="POST" style="display: inline;">
-          {% csrf_token %}
-          <button type="submit" class="btn btn-danger delete-button">Eliminar</button>
-        </form>
+        {% if perms.stock.delete_medicamento %}
+          <form action="{% url 'eliminar_medicamento' medicamento.id %}" method="POST" style="display: inline;">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger delete-button">Eliminar</button>
+          </form>
+        {% endif %}
       </td>
     </tr>
     {% empty %}
