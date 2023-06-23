@@ -212,17 +212,6 @@ def detalle_proveedor(request, proveedor_id):
 
 'Otros'
 
-def register(request):
-    if request.method == 'POST':
-        form = RegistrationForm(request.POST)
-        if form.is_valid():
-            user = form.save()
-            messages.success(request, '¡Registro exitoso! Por favor inicia sesión.')
-            return redirect('login')
-    else:
-        form = RegistrationForm()
-    return render(request, 'register.html', {'registration_form': form})
-
 @login_required
 def profile_view(request):
     return render(request, 'profile.html')
