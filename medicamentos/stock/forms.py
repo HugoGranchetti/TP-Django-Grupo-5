@@ -4,7 +4,7 @@ from .models import Pedido
 from django.forms.widgets import SelectDateWidget
 from django.utils import timezone
 import datetime
-from .models import User, Pedido, Medicamento, Cliente, Proveedor
+from .models import Pedido, Medicamento, Cliente, Proveedor
 
 class ClienteForm(forms.ModelForm):
     class Meta:
@@ -67,23 +67,3 @@ class PedidoForm(forms.ModelForm):
             pedido.save()
         pedido.productos.add(self.cleaned_data['productos'].id)
         return pedido
-    
-class RegistrationForm(forms.ModelForm):
-    password = forms.CharField(widget=forms.PasswordInput())
-    
-    class Meta:
-        model = User
-        fields = ['email', 'password']
-   
-    def clean_email(self):
-        email = self.cleaned_data.get('email')
-        if User.objects.filter(email=email).exists():
-            raise forms.ValidationError("Este correo electrónico ya está en uso.")
-        return email
-   
-    def save(self, commit=True):
-        user = super(RegistrationForm, self).save(commit=False)
-        user.set_password(self.cleaned_data["password"])
-        if commit:
-            user.save()
-        return user

@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
-from .models import Medicamento, Proveedor, Cliente, Pedido,User
-from .forms import MedicamentoForm, ClienteForm, ProveedorForm, PedidoForm, RegistrationForm
+from .models import Medicamento, Proveedor, Cliente, Pedido
+from .forms import MedicamentoForm, ClienteForm, ProveedorForm, PedidoForm
 from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth import authenticate, login, logout
 from django.views.decorators.http import require_POST
@@ -226,5 +226,3 @@ def register(request):
 @login_required
 def profile_view(request):
     return render(request, 'profile.html')
-
-

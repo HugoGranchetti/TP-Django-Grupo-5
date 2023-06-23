@@ -35,7 +35,3 @@ class Pedido(models.Model):
     cantidad = models.IntegerField()
     proveedor=models.ManyToManyField(Proveedor)
     archivo = models.FileField(upload_to='uploads/', blank=True, null=True)
-
-class User(models.Model):
-    email = models.EmailField(unique=True)
-    password = models.CharField(max_length=128)
