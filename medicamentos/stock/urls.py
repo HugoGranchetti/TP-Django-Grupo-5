@@ -24,7 +24,6 @@ urlpatterns = [
     path('medicamento/<int:pk>/eliminar/', views.eliminar_medicamento, name='eliminar_medicamento'),
     path('cliente/<int:cliente_id>/', views.detalle_cliente, name='detalle_cliente'),
     path('alta_proveedor/', views.alta_proveedor, name='alta_proveedor'),
-    path('register/', views.register, name='register'),
     path('accounts/profile/', views.profile_view, name='profile'),
     path('accounts/login/', views.login,name='login'),   
     path('proveedores/eliminar/', views.eliminar_proveedor, name='eliminar_proveedor'),

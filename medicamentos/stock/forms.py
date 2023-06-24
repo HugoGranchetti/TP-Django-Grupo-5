@@ -1,6 +1,4 @@
 from django import forms
-from .models import Medicamento
-from .models import Pedido
 from django.forms.widgets import SelectDateWidget
 from django.utils import timezone
 import datetime

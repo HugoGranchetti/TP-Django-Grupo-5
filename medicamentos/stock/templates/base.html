@@ -15,6 +15,7 @@
     <header>
         <h1>ARGPharm</h1>
         <p>¡El mejor socio para tu farmacia!</p>
+        <img src="{% static 'stock/img/logo.png' %}" width="111.25" height="93">
         {% if user.is_authenticated %}
         <p>Bienvenido, {{ user.first_name }}</p>
         {% endif %}
